@@ -26,6 +26,6 @@ app.post('/',function(req,res){
 
 });
 
-app.listen(4444,function(){
+app.listen(process.env.PORT || 4444,function(){
     console.log('Server started');
 })

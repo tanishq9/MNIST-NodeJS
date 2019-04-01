@@ -21,11 +21,11 @@ $(function(){
         $.post(
             '/',
             {encoded : data},
-            function(data){
-                console.log(data);
+            function(ans){
+                console.log(ans);
                 //window.alert(data);
                 div_result.show();
-                result_text.text("The prediction is : "+data);
+                result_text.text("The prediction is : "+ans);
             }
         )
     });

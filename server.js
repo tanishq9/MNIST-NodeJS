@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express();
-
+const cors = require('cors');
 // Middleware for POST request data 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors());
 
 app.use('/',express.static(__dirname+'/public'));
 

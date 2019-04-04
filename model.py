@@ -1,4 +1,4 @@
-import sys
+#import sys
 from keras.models import load_model
 from keras.preprocessing import image
 

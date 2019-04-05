@@ -18,6 +18,7 @@ app.post('/',function(req,res){
     console.log('Version 1: calling Python script from a Node child process');
     var spawn = require('child_process').spawn;
     var process = spawn('python',['./model.py']);
+
     process.stdout.on('data',function(result){
         var textChunk = result.toString('utf-8'); // buffer to string
         console.log(textChunk);

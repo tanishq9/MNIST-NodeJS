@@ -3,7 +3,7 @@ from keras.models import load_model
 from keras.preprocessing import image
 
 def predict():
-    print(sys.path)
+    #print(sys.path)
     print("Process started")
     new_model = load_model('mnist_model_keras_collab.h5')
     print('model_loaded')

@@ -1,4 +1,6 @@
-#import sys
+import sys
+import keras
+import tensorflow
 from keras.models import load_model
 from keras.preprocessing import image
 
@@ -17,4 +19,8 @@ def predict():
     print(output.argmax())
 
 if __name__ == "__main__":
+    print(sys.version)
+    print(keras.__version__)
+    print(tensorflow.__version__)
+    print("Predict function called")
     predict()

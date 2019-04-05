@@ -15,18 +15,33 @@ app.post('/',function(req,res){
         console.log(err);
     });
 
+    // Promise function
+    getOutput()
+    .then(function(output){
+        res.send(output);
+    })
+    .catch(function(err){
+        res.send(err);
+    });
+
+});
+
+function getOutput(){
+
     console.log('Version 1: calling Python script from a Node child process');
     var spawn = require('child_process').spawn;
     var process = spawn('python',['./model.py']);
 
-    process.stdout.on('data',function(result){
-        var textChunk = result.toString('utf-8'); // buffer to string
-        console.log(textChunk);
-        console.log("Sending the response.")
-        res.send(textChunk);
-    });
-
-});
+    return new Promise(function(resolve,reject){
+        process.stdout.on('data',function(result){
+            var textChunk = result.toString('utf-8'); // buffer to string
+            console.log(textChunk);
+            console.log("Sending the response.")
+            //res.send(textChunk);
+            resolve(textChunk);
+        });
+    })
+}
 
 app.listen(process.env.PORT || 4444,function(){
     console.log('Server started');
